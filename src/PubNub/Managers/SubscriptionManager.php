@@ -237,12 +237,13 @@ class SubscriptionManager
 
             $pnPresenceResult = new PNPresenceEventResult(
                 $presencePayload->getAction(),
-                $strippedPresenceChannel,
-                $strippedPresenceSubscription,
-                $publishMetadata->getPublishTimetoken(),
-                $presencePayload->getOccupancy(),
                 $presencePayload->getUuid(),
                 $presencePayload->getTimestamp(),
+                $presencePayload->getOccupancy(),
+                $strippedPresenceSubscription,
+                $strippedPresenceChannel,
+                $publishMetadata->getPublishTimetoken(),
+                '',
                 $presencePayload->getData()
             );
 
@@ -260,7 +261,8 @@ class SubscriptionManager
                 $channel,
                 $subscriptionMatch,
                 $publishMetadata->getPublishTimetoken(),
-                $publisher
+                $publisher,
+                $message->getUserMetaData()
             );
 
             $this->listenerManager->announceMessage($pnMessageResult);

@@ -20,6 +20,9 @@ class PNMessageResult
     /** @var  string */
     private $publisher;
 
+    /** @var  array|null */
+    private $userMetaData;
+
     /**
      * PNMessageResult constructor.
      * @param array $message
@@ -27,14 +30,16 @@ class PNMessageResult
      * @param string $subscription
      * @param int $timetoken
      * @param string $publisher
+     * @param array|null $userMetaData
      */
-    public function __construct($message, $channel, $subscription, $timetoken, $publisher)
+    public function __construct($message, $channel, $subscription, $timetoken, $publisher, $userMetaData = null)
     {
         $this->message = $message;
         $this->channel = $channel;
         $this->subscription = $subscription;
         $this->timetoken = $timetoken;
         $this->publisher = $publisher;
+        $this->userMetaData = $userMetaData;
     }
 
     /**
@@ -67,6 +72,14 @@ class PNMessageResult
     public function getTimetoken()
     {
         return $this->timetoken;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getUserMetaData()
+    {
+        return $this->userMetaData;
     }
 
     /**

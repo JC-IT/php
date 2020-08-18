@@ -34,6 +34,9 @@ class SubscribeMessage
     /** @var  PublishMetadata */
     private $publishMetaData;
 
+    /** @var  array */
+    private $userMetaData;
+
     /**
      * @param array $jsonInput
      * @return SubscribeMessage
@@ -60,6 +63,10 @@ class SubscribeMessage
 
         if (array_key_exists('o', $jsonInput)) {
             $message->originationMetadata = $jsonInput['o'];
+        }
+
+        if (array_key_exists('u', $jsonInput)) {
+            $message->userMetaData = $jsonInput['u'];
         }
 
         $message->publishMetaData = PublishMetadata::fromJson($jsonInput['p']);
@@ -129,5 +136,13 @@ class SubscribeMessage
     public function getPublishMetaData()
     {
         return $this->publishMetaData;
+    }
+
+    /**
+     * @return array
+     */
+    public function getUserMetaData()
+    {
+        return $this->userMetaData;
     }
 }

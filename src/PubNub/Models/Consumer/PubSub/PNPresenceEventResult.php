@@ -41,4 +41,36 @@ class PNPresenceEventResult
         $this->state = $state;
         $this->userMetadata = $userMetadata;
     }
+
+    /**
+     * @return string
+     */
+    public function getChannel()
+    {
+        return $this->channel;
+    }
+
+    /**
+     * @return String
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+
+    /**
+     * @return String
+     */
+    public function getUuid()
+    {
+        return $this->uuid;
+    }
 }
